@@ -176,6 +176,12 @@ multfreqtable(survey_data,"q2")
 
 multfreqtable(survey_data,"q1")
 
+###how many has the agents done
+RA =survey_data %>% group_by(RA) %>% 
+  filter(Reached == "Yes",Do.I.have.your.permission.to.proceed.== "Yes")%>% 
+  summarise (Number =n_distinct(MSISDN))
+
+
 
 
 
