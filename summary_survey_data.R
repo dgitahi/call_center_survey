@@ -1,7 +1,7 @@
 setwd("/Users/dgitahi/documents/survey")
 library(dplyr)
 library(ggplot2)
-survey_data=read.csv("survey_data.csv")
+survey_data=read.csv("survey_01.csv")
 colnames(survey_data)[14] = "Reason_for_calling"
 colnames(survey_data)[21] = "What_problem"
 colnames(survey_data)[7] = "Why_it_is_no"
@@ -14,52 +14,52 @@ colnames(survey_data)[19] = "Why_did_you_call"
 colnames(survey_data)[23] = "Did_you_resolve_issue"
 
 
-colnames(survey_data)[24] = "q2a" #Ignore
-colnames(survey_data)[25] = "q2b" #Buy_another_line
-colnames(survey_data)[26] = "q2c" #Call_help_line
-colnames(survey_data)[27] = "q2d" #Vist_Retail_center
-colnames(survey_data)[28] = "q2e" #Contact_safaricom_staff
-colnames(survey_data)[29] = "q2f" #Vist_Dealer
-colnames(survey_data)[30] = "q2g" #Call_a_friend
+colnames(survey_data)[24] = "q2_Ignore" #Ignore
+colnames(survey_data)[25] = "q2_Buy_another_line" #Buy_another_line
+colnames(survey_data)[26] = "q2_Call_help_line" #Call_help_line
+colnames(survey_data)[27] = "q2_Vist_Retail_center" #Vist_Retail_center
+colnames(survey_data)[28] = "q2_Contact_safaricom_staff" #Contact_safaricom_staff
+colnames(survey_data)[29] = "q2_Vist_Dealer" #Vist_Dealer
+colnames(survey_data)[30] = "q2_Call_a_friend" #Call_a_friend
 
 
 
-survey_data$q2a =as.numeric(ifelse(survey_data$q2a == "Checked",1,0))
-survey_data$q2b =as.numeric(ifelse(survey_data$q2b == "Checked",1,0))
-survey_data$q2c =as.numeric(ifelse(survey_data$q2c == "Checked",1,0))
-survey_data$q2d =as.numeric(ifelse(survey_data$q2d == "Checked",1,0))
-survey_data$q2e =as.numeric(ifelse(survey_data$q2e == "Checked",1,0))
-survey_data$q2f =as.numeric(ifelse(survey_data$q2f == "Checked",1,0))
-survey_data$q2g =as.numeric(ifelse(survey_data$q2g == "Checked",1,0))
+survey_data$q2_Ignore =as.numeric(ifelse(survey_data$q2_Ignore == "Checked",1,0))
+survey_data$q2_Buy_another_line =as.numeric(ifelse(survey_data$q2_Buy_another_line == "Checked",1,0))
+survey_data$q2_Call_help_line =as.numeric(ifelse(survey_data$q2_Call_help_line == "Checked",1,0))
+survey_data$q2_Vist_Retail_center =as.numeric(ifelse(survey_data$q2_Vist_Retail_center == "Checked",1,0))
+survey_data$q2_Contact_safaricom_staff =as.numeric(ifelse(survey_data$q2_Contact_safaricom_staff == "Checked",1,0))
+survey_data$q2_Vist_Dealer =as.numeric(ifelse(survey_data$q2_Vist_Dealer == "Checked",1,0))
+survey_data$q2_Call_a_friend =as.numeric(ifelse(survey_data$q2_Call_a_friend == "Checked",1,0))
 
 
 
-colnames(survey_data)[32] = "q1a" #sms
-colnames(survey_data)[33] = "q1b" #Twitter
-colnames(survey_data)[34] = "q1c" #Facebook
-colnames(survey_data)[35] = "q1d" #Chat
-colnames(survey_data)[36] = "q1e" #Shop_care_Desk
-colnames(survey_data)[37] = "q1f" #Safaricom Staff
-colnames(survey_data)[38] = "q1g" #MPESA.agent.Dealer
-colnames(survey_data)[39] = "q1h" #Friend_or_Family
-colnames(survey_data)[40] = "q1i" #DIY
-colnames(survey_data)[41] = "q1j" #Called_back_Callcenter
+colnames(survey_data)[32] = "q1_sms" #sms
+colnames(survey_data)[33] = "q1_Twitter" #Twitter
+colnames(survey_data)[34] = "q1_Facebook" #Facebook
+colnames(survey_data)[35] = "q1_Chat" #Chat
+colnames(survey_data)[36] = "q1_Shop" #Shop_care_Desk
+colnames(survey_data)[37] = "q1_Staff" #Safaricom Staff
+colnames(survey_data)[38] = "q1_MpesaAgent" #MPESA.agent.Dealer
+colnames(survey_data)[39] = "q1_Friend" #Friend_or_Family
+colnames(survey_data)[40] = "q1_DIY" #DIY
+colnames(survey_data)[41] = "q1_Call_Back" #Called_back_Callcenter
 
-survey_data$q1c=replace(survey_data$q1c,is.na(survey_data$q1c),"")
-survey_data$q1d= replace(survey_data$q1d,is.na(survey_data$q1d),"")
+survey_data$q1_Facebook=replace(survey_data$q1_Facebook,is.na(survey_data$q1_Facebook),"")
+survey_data$q1_Chat= replace(survey_data$q1_Chat,is.na(survey_data$q1_Chat),"")
 
 
 
-survey_data$q1a =as.numeric(ifelse(survey_data$q1a == "Checked",1,0))
-survey_data$q1b =as.numeric(ifelse(survey_data['q1b'] == "Checked",1,0))
-survey_data$q1c =as.numeric(ifelse(survey_data$q1c == "Checked",1,0))
-survey_data$q1d =as.numeric(ifelse(survey_data$q1d == "Checked",1,0))
-survey_data$q1e =as.numeric(ifelse(survey_data$q1e == "Checked",1,0))
-survey_data$q1f =as.numeric(ifelse(survey_data$q1f == "Checked",1,0))
-survey_data$q1g =as.numeric(ifelse(survey_data$q1g == "Checked",1,0))
-survey_data$q1h =as.numeric(ifelse(survey_data$q1h == "Checked",1,0))
-survey_data$q1i =as.numeric(ifelse(survey_data$q1i == "Checked",1,0))
-survey_data$q1j =as.numeric(ifelse(survey_data$q1j == "Checked",1,0))
+survey_data$q1_sms =as.numeric(ifelse(survey_data$q1_sms == "Checked",1,0))
+survey_data$q1_Twitter =as.numeric(ifelse(survey_data['q1_Twitter'] == "Checked",1,0))
+survey_data$q1_Facebook =as.numeric(ifelse(survey_data$q1_Facebook == "Checked",1,0))
+survey_data$q1_Chat =as.numeric(ifelse(survey_data$q1_Chat == "Checked",1,0))
+survey_data$q1_Shop =as.numeric(ifelse(survey_data$q1_Shop == "Checked",1,0))
+survey_data$q1_Staff =as.numeric(ifelse(survey_data$q1_Staff == "Checked",1,0))
+survey_data$q1_MpesaAgent =as.numeric(ifelse(survey_data$q1_MpesaAgent == "Checked",1,0))
+survey_data$q1_Friend =as.numeric(ifelse(survey_data$q1_Friend == "Checked",1,0))
+survey_data$q1_DIY =as.numeric(ifelse(survey_data$q1_DIY == "Checked",1,0))
+survey_data$q1_Call_Back =as.numeric(ifelse(survey_data$q1_Call_Back == "Checked",1,0))
 
 survey_data$Reason_for_Calling_identity <-survey_data$Reason_for_calling
 survey_data$Reason_for_Calling_identity = as.character(survey_data$Reason_for_Calling_identity)
