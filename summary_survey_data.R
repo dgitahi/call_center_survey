@@ -1,12 +1,12 @@
 setwd("/Users/dgitahi/documents/survey")
 library(dplyr)
 library(ggplot2)
-<<<<<<< HEAD
+
 survey_data=read.csv("Survey_11_data.csv")
 
-=======
+
 survey_data=read.csv("survey_01.csv")
->>>>>>> c1951284d080099439ef1b872f21f44006ea0703
+
 colnames(survey_data)[14] = "Reason_for_calling"
 colnames(survey_data)[21] = "What_problem"
 colnames(survey_data)[2] = "Date_Created"
